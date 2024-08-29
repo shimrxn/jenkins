@@ -1,0 +1,127 @@
+Started by user shimron 
+Obtained jenkinsfile from git https://github.com/shimrxn/jenkins/
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /Users/shimrxn/.jenkins/workspace/Creating a Jenkins Pipeline with GitHub Integration 1
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /Users/shimrxn/.jenkins/workspace/Creating a Jenkins Pipeline with GitHub Integration 1/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/shimrxn/jenkins/ # timeout=10
+Fetching upstream changes from https://github.com/shimrxn/jenkins/
+ > git --version # timeout=10
+ > git --version # 'git version 2.34.1'
+ > git fetch --tags --force --progress -- https://github.com/shimrxn/jenkins/ +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision c03f07e5aad733cfefe220880c54718c26c32367 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f c03f07e5aad733cfefe220880c54718c26c32367 # timeout=10
+Commit message: "jenkinsfile final"
+ > git rev-list --no-walk c03f07e5aad733cfefe220880c54718c26c32367 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+Building the application...
+[Pipeline] echo
+Using Maven to build the application.
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Unit and Integration Tests)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+Running unit and integration tests...
+[Pipeline] echo
+Using JUnit for unit testing and TestNG for integration testing.
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Code Analysis)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+Performing code analysis...
+[Pipeline] echo
+Using SonarQube for code analysis.
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Security Scan)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+Performing security scan...
+[Pipeline] echo
+Using OWASP Dependency-Check for security scanning.
+[Pipeline] }
+[Pipeline] // script
+Post stage
+[Pipeline] emailext
+Sending email to: uoy8006@gmail.com
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy to Staging)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+Deploying to staging server...
+[Pipeline] echo
+Using AWS CLI for deployment to staging.
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Integration Tests on Staging)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+Running integration tests on staging...
+[Pipeline] echo
+Using TestNG for integration testing on staging.
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy to Production)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+Deploying to production server...
+[Pipeline] echo
+Using AWS CLI for deployment to production.
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] mail
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
