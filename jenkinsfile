@@ -47,7 +47,7 @@ pipeline {
             post {
                 always {
                     emailext (
-                        to: 'developer@example.com',
+                        to: 'shimrxn@gmail.com',
                         subject: "Security Scan Completed: ${currentBuild.fullDisplayName}",
                         body: """The security scan stage has completed with status: ${currentBuild.result}.
                                  Logs are attached.""",
@@ -93,12 +93,12 @@ pipeline {
 
     post {
         success {
-            mail to: 'developer@example.com',
+            mail to: 'shimrxn@gmail.com',
                  subject: "Jenkins Pipeline Success: ${currentBuild.fullDisplayName}",
                  body: "All stages completed successfully."
         }
         failure {
-            mail to: 'developer@example.com',
+            mail to: 'shimrxn@gmail.com',
                  subject: "Jenkins Pipeline Failure: ${currentBuild.fullDisplayName}",
                  body: "The pipeline has failed. Please check the logs for details."
         }
