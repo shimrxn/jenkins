@@ -39,7 +39,7 @@ pipeline {
             post {
                 always {
                     emailext (
-                        to: 'rozarioshimron@gmail.com',
+                        to: 'uoy8006@gmail.com',
                         subject: "Security Scan Completed: ${currentBuild.fullDisplayName}",
                         body: "The security scan stage has completed with status: ${currentBuild.result}.",
                         attachLog: true
@@ -79,7 +79,7 @@ pipeline {
     post {
         always {
             emailext (
-                to: 'rozarioshimron@gmail.com',
+                to: 'uoy8006@gmail.com,
                 subject: "Jenkins Pipeline: ${currentBuild.fullDisplayName}",
                 body: "Pipeline run completed with status: ${currentBuild.result}. Please check Jenkins for more details.",
                 attachLog: true
