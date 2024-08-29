@@ -4,53 +4,44 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                script {
-                    echo 'Building the application...'
-                    // Use Maven or Gradle as a build tool
-                    echo 'Using Maven to build the application.'
-                    // Example command: sh 'mvn clean package'
-                }
+                echo 'Building the application...'
+                // Simulate build step
+                echo 'Using Maven to build the application.'
+                // Example command: sh 'mvn clean package'
             }
         }
 
         stage('Unit and Integration Tests') {
             steps {
-                script {
-                    echo 'Running unit and integration tests...'
-                    // Tools: JUnit, TestNG
-                    echo 'Using JUnit for unit testing and TestNG for integration testing.'
-                    // Example command: sh 'mvn test'
-                }
+                echo 'Running unit and integration tests...'
+                // Simulate test step
+                echo 'Using JUnit for unit tests and TestNG for integration tests.'
+                // Example command: sh 'mvn test'
             }
         }
 
         stage('Code Analysis') {
             steps {
-                script {
-                    echo 'Performing code analysis...'
-                    // Tool: SonarQube or Checkstyle
-                    echo 'Using SonarQube for code analysis.'
-                    // Example command: sh 'mvn sonar:sonar'
-                }
+                echo 'Performing code analysis...'
+                // Simulate code analysis step
+                echo 'Using SonarQube for code analysis.'
+                // Example command: sh 'mvn sonar:sonar'
             }
         }
 
         stage('Security Scan') {
             steps {
-                script {
-                    echo 'Performing security scan...'
-                    // Tool: OWASP Dependency-Check
-                    echo 'Using OWASP Dependency-Check for security scanning.'
-                    // Example command: sh 'dependency-check --project my-app --scan ./'
-                }
+                echo 'Performing security scan...'
+                // Simulate security scan step
+                echo 'Using OWASP Dependency-Check for security scanning.'
+                // Example command: sh 'dependency-check --project my-app --scan ./'
             }
             post {
                 always {
                     emailext (
-                        to: 'shimrxn@gmail.com',
+                        to: 'rozarioshimron@gmail.com',
                         subject: "Security Scan Completed: ${currentBuild.fullDisplayName}",
-                        body: """The security scan stage has completed with status: ${currentBuild.result}.
-                                 Logs are attached.""",
+                        body: "The security scan stage has completed with status: ${currentBuild.result}.",
                         attachLog: true
                     )
                 }
@@ -59,48 +50,40 @@ pipeline {
 
         stage('Deploy to Staging') {
             steps {
-                script {
-                    echo 'Deploying to staging server...'
-                    // Example: Deploy using AWS CLI
-                    echo 'Using AWS CLI for deployment to staging.'
-                    // Example command: sh 'aws deploy create-deployment --application-name my-app --deployment-group-name staging --s3-location bucket=my-bucket,key=my-app.zip,bundleType=zip'
-                }
+                echo 'Deploying to staging server...'
+                // Simulate deployment to staging
+                echo 'Using AWS CLI for deployment to staging.'
+                // Example command: sh 'aws deploy create-deployment ...'
             }
         }
 
         stage('Integration Tests on Staging') {
             steps {
-                script {
-                    echo 'Running integration tests on staging...'
-                    // Tool: TestNG or custom scripts
-                    echo 'Using TestNG for integration testing on staging.'
-                    // Example command: sh 'mvn integration-test -Denv=staging'
-                }
+                echo 'Running integration tests on staging...'
+                // Simulate integration tests on staging
+                echo 'Using TestNG for integration testing on staging.'
+                // Example command: sh 'mvn integration-test -Denv=staging'
             }
         }
 
         stage('Deploy to Production') {
             steps {
-                script {
-                    echo 'Deploying to production server...'
-                    // Example: Deploy using AWS CLI
-                    echo 'Using AWS CLI for deployment to production.'
-                    // Example command: sh 'aws deploy create-deployment --application-name my-app --deployment-group-name production --s3-location bucket=my-bucket,key=my-app.zip,bundleType=zip'
-                }
+                echo 'Deploying to production server...'
+                // Simulate deployment to production
+                echo 'Using AWS CLI for deployment to production.'
+                // Example command: sh 'aws deploy create-deployment ...'
             }
         }
     }
 
     post {
-        success {
-            mail to: 'shimrxn@gmail.com',
-                 subject: "Jenkins Pipeline Success: ${currentBuild.fullDisplayName}",
-                 body: "All stages completed successfully."
-        }
-        failure {
-            mail to: 'shimrxn@gmail.com',
-                 subject: "Jenkins Pipeline Failure: ${currentBuild.fullDisplayName}",
-                 body: "The pipeline has failed. Please check the logs for details."
+        always {
+            emailext (
+                to: 'rozarioshimron@gmail.com',
+                subject: "Jenkins Pipeline: ${currentBuild.fullDisplayName}",
+                body: "Pipeline run completed with status: ${currentBuild.result}. Please check Jenkins for more details.",
+                attachLog: true
+            )
         }
     }
 }
